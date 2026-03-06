@@ -1,0 +1,37 @@
+@use "../setting/utility" as *;
+@use "../functions/functions" as mx;
+@use "../base/space";
+
+/* -------------------------------------------------------------------
+  layout
+------------------------------------------------------------------- */
+
+.section {
+  @extend .pt-high;
+}
+
+.inner {
+  width: calc(1080px + (1.25rem * 2));
+  max-width: 100%;
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+  &.--separate {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: #{$high-sp}px;
+  }
+}
+
+// 767px 以下 -------------------------------------------------
+
+@media screen and (min-width: 768px), print {
+  .inner {
+    &.--separate {
+      grid-template-columns: 35% 1fr;
+      gap: mx.rem(20);
+    }
+  }
+}
+
+@media screen and (max-width: 767.9px) {
+}

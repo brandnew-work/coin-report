@@ -1,0 +1,84 @@
+@use "../setting/utility" as *;
+@use "../functions/functions" as mx;
+@use "../base/space";
+
+/* -------------------------------------------------------------------
+  title
+------------------------------------------------------------------- */
+
+.title {
+  &-wrap {
+    display: flex;
+    align-items: baseline;
+    gap: .5em;
+    margin-bottom: .5rem;
+    font-size: 1.25rem;
+    &::before {
+      content: '■';
+      flex-shrink: 0;
+      color: $color-main;
+    }
+    &__text {
+      font-weight: bold;
+    }
+    &__remark {
+      font-size: .875rem;
+      font-weight: 500;
+    }
+  }
+
+  &-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0 3rem;
+    margin-block: 0;
+    padding-block: 2rem;
+    border-bottom: 1px solid $color-border;
+    font-size: 1.75rem;
+    @media print {
+      padding-top: 0;
+    }
+    &__date {
+      display: flex;
+      align-items: baseline;
+      gap: .5rem;
+      .--text {
+        font-size: 1.5rem;
+      }
+    }
+  }
+
+  &__sub {
+    color: $color-main;
+  }
+
+  &__mini {
+    color: $color-main;
+  }
+
+  &__text {
+    font-family: $font-title;
+  }
+
+}
+
+
+/* -------------------------------------------------------------------
+  768px以上
+------------------------------------------------------------------- */
+
+@media screen and (min-width: 768px),
+print {
+  .title {
+    &-page {
+      flex-direction: row;
+      font-size: 2rem;
+      &__date {
+        .--text {
+          font-size: 2rem;
+        }
+      }
+    }
+  }
+} // media screen

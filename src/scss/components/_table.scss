@@ -1,0 +1,59 @@
+@use "../setting/utility" as *;
+@use "../functions/functions" as mx;
+
+/* -------------------------------------------------------------------
+  table
+------------------------------------------------------------------- */
+
+.table {
+  width: 100%;
+  border-spacing: 0;
+  border-top: 1px solid $color-border;
+  border-left: 1px solid $color-border;
+  font-size: mx.rem(14);
+  th,
+  td {
+    vertical-align: wrap;
+    padding: 0.5em;
+    border-right: 1px solid $color-border;
+    border-bottom: 1px solid $color-border;
+    font-size: 1em;
+  }
+  th {
+    width: 0;
+    background-color: $color-border;
+    white-space: nowrap;
+    font-weight: 700;
+  }
+  td {
+    text-align: center;
+  }
+  &:not(.table-data) {
+    th,
+    td {
+      text-align: left;
+    }
+  }
+  tr.--emphasis {
+    font-size: 110%;
+    th,
+    td {
+      background-color: rgba(#ff9f40, 0.2);
+      font-weight: bold;
+    }
+  }
+}
+
+@media screen and (min-width: 768px), print {
+  .table {
+    &-data {
+      table-layout: fixed;
+    }
+    &:not(.table-data) {
+      th,
+      td {
+        text-align: center;
+      }
+    }
+  }
+}

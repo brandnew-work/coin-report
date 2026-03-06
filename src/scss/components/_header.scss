@@ -1,0 +1,50 @@
+@charset "UTF-8";
+@use "../setting/utility" as *;
+@use "../functions/functions" as mx;
+@use "../base/space";
+@use "../components/layout";
+@use "../components/btn-block";
+
+/* -------------------------------------------------------------------
+  header
+------------------------------------------------------------------- */
+
+// header -------------------------------------------------
+
+.header {
+  position: relative;
+  .scroll-ready & {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    width: 100%;
+    transform: translateY(-100%);
+  }
+  .scroll-on & {
+    transform: translateY(0%);
+    transition: transform .3s linear;
+  }
+}
+
+// hover -------------------------------------------------
+
+
+@media screen and (min-width: $animation-width) {
+  .header-btns {
+  }
+}
+
+@media screen and (min-width: 1366px) {
+  .header {
+  }
+}
+
+// 767px以下 -------------------------------------------------
+
+@media screen and (max-width: 1365.9px) {
+  .header {
+  }
+} // media screen
+
+

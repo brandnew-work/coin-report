@@ -1,0 +1,34 @@
+/* -------------------------------------------------------------------
+  display
+------------------------------------------------------------------- */
+
+.d {
+  &-inline {
+    display: inline;
+  }
+  &-inline-block {
+    display: inline-block;
+  }
+  &-block {
+    display: block;
+  }
+  &-flex {
+    display: flex;
+  }
+}
+
+/* -------------------------------------------------------------------
+  show and hide
+------------------------------------------------------------------- */
+
+
+// 768px以下 Tablet -------------------------------------------------
+
+@media screen and (min-width: 769px),
+print {
+  .--sp { display: none !important; }
+}
+
+@media screen and (max-width: 768px) {
+  .--pc { display: none !important; }
+}

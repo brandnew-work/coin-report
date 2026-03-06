@@ -1,0 +1,373 @@
+@charset "UTF-8";
+
+@use "base/background";
+@use "base/display";
+@use "base/space";
+@use "components/header";
+@use "components/header-nav";
+@use "components/footer";
+@use "components/layout";
+@use "components/title";
+@use "components/table";
+@use "components/post-contents";
+@use "components/btn-block";
+
+@use "setting/utility" as *;
+@use "functions/functions" as mx;
+
+/* -------------------------------------------------------------------
+  base
+------------------------------------------------------------------- */
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  // overflow-x: hidden;
+}
+
+html {
+  font-size: 13px;
+  @media print {
+    font-size: 12px;
+  }
+}
+
+body {
+  font-size: 1rem;
+  font-family: "游ゴシック体", YuGothic, "游ゴシック", "Yu Gothic", sans-serif;
+  font-weight: 500;
+  line-height: normal;
+  color: $color-text;
+  background-color: $color-base;
+  &.--on {
+    overflow: hidden;
+  }
+}
+
+a {
+  color: $color-text;
+  text-decoration: underline;
+  @media screen and (min-width: $animation-width) {
+    transition: 0.3s linear color;
+    &:hover {
+      color: $color-main;
+    }
+    img {
+      transition: 0.3s linear opacity;
+      &:hover {
+        opacity: 0.5;
+      }
+    }
+  }
+}
+
+p {
+  margin-top: 0;
+  word-break: break-all;
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+img,
+svg {
+  vertical-align: bottom;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+}
+
+figure {
+  margin: 0;
+}
+
+b {
+  color: $color-main;
+  font-weight: 500;
+}
+
+iframe {
+  max-width: 100%;
+  border: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+h2,
+h3,
+h4,
+h5 {
+  margin: 0;
+}
+
+.fw {
+  &-b {
+    font-weight: 700;
+  }
+  &-m {
+    font-weight: 500;
+  }
+  &-l {
+    font-weight: 400;
+  }
+}
+
+.text {
+  &-center {
+    text-align: center;
+  }
+  &-right {
+    text-align: right;
+  }
+}
+
+.list-dot {
+  padding-left: 1.5em;
+  ul {
+    padding-left: 1.5em;
+    list-style-type: lower-latin;
+  }
+}
+
+.list-num {
+  padding-left: 1.5em;
+  list-style-type: decimal;
+  ul {
+    padding-left: 1.5em;
+    list-style-type: lower-latin;
+  }
+}
+
+.page1 {
+  margin-top: 2rem;
+  font-size: mx.rem(13);
+  .title-wrap__text {
+    font-size: mx.rem(16);
+  }
+  .title-wrap__text::before {
+    font-size: mx.rem(16);
+  }
+  .table {
+    td,
+    th {
+      font-size: mx.rem(13);
+    }
+  }
+  ul {
+    margin: 0;
+  }
+}
+
+.ex-head {
+  #page2 & {
+    margin-bottom: 1.5rem;
+  }
+  &__contents {
+    display: flex;
+    gap: 1.5rem;
+    border-bottom: 1px solid $color-border;
+    #page1 & {
+      margin-bottom: 1.5rem;
+      padding-block: 1.5rem;
+    }
+    #page2 & {
+      padding-block: 1.5rem;
+    }
+  }
+  &__logo {
+    flex-shrink: 0;
+    display: grid;
+    place-items: center;
+    width: 100px;
+    height: 100px;
+    padding: 5px;
+    border: 1px solid $color-border;
+  }
+  &__info {
+    display: grid;
+    gap: 0.625rem;
+    &-title {
+      margin-bottom: 0;
+      font-size: 1.5rem;
+      font-weight: 700;
+    }
+    &-meta {
+      display: grid;
+      gap: 0.625rem;
+      &.--flex {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.625rem 1.5rem;
+      }
+      &__row {
+        display: flex;
+        align-items: baseline;
+        flex-direction: column;
+        gap: 0.5rem;
+        margin: 0;
+        font-size: 1rem;
+        dt {
+          flex-shrink: 0;
+          width: calc(6em + (0.75rem * 2));
+          padding-inline: 0.75rem;
+          background-color: $color-main;
+          border-radius: 3px;
+          text-align: center;
+          color: white;
+        }
+        dd {
+          margin: 0;
+        }
+      }
+    }
+    &-notice {
+      font-size: 0.75rem;
+    }
+  }
+  &__notice {
+    margin-block: 1rem 4rem;
+  }
+}
+
+.remark {
+  font-size: 0.75rem;
+}
+.asterisk {
+  font-size: 0.6rem;
+  vertical-align: super;
+}
+
+.performance-chart {
+  height: 300px !important;
+}
+
+.divider {
+  break-after: page;
+}
+
+.oem-info-list {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 0;
+  padding-top: 1em;
+  border-top: 1px solid $color-border;
+  font-size: mx.rem(14);
+  dt {
+    font-weight: bold;
+  }
+  dt:not(:first-child) {
+    margin-left: 1em;
+  }
+  dd {
+    margin-left: 0.5em;
+  }
+}
+
+.state-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: mx.rem(16);
+  &__item {
+    margin-top: mx.rem(20);
+  }
+  &__item-title {
+    font-weight: bold;
+    font-size: mx.rem(18);
+    margin-bottom: mx.rem(10);
+  }
+}
+
+.vmv-item {
+  display: grid;
+  grid-template-columns: 25% 1fr;
+  gap: mx.rem(16);
+  align-items: center;
+  & + & {
+    margin-top: mx.rem(8);
+  }
+  &__title {
+    font-size: mx.rem(14);
+    margin-bottom: 0;
+    &::before {
+      content: attr(en);
+      font-size: mx.rem(24);
+      font-weight: bold;
+      text-transform: capitalize;
+      margin-right: mx.rem(10);
+    }
+  }
+  &__contents {
+    padding: mx.rem(16) mx.rem(20);
+    background-color: #fafafa;
+    border: 1px solid $color-border;
+    font-size: mx.rem(14);
+    .--vision & {
+      font-weight: bold;
+      font-size: mx.rem(16);
+    }
+    .--value & {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      padding: 0;
+    }
+    b {
+      font-weight: bold;
+    }
+  }
+}
+.value-column {
+  position: relative;
+  margin-block: 0;
+  padding-block: mx.rem(34) mx.rem(11);
+  padding-inline: mx.rem(16);
+  & + & {
+    border-left: 1px solid $color-border;
+  }
+  dt {
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: mx.rem(12);
+    padding-inline: mx.rem(18);
+    background-color: $color-main;
+    color: white;
+  }
+  dd {
+    margin-left: 0;
+  }
+}
+
+/* -------------------------------------------------------------------
+  768px以上
+------------------------------------------------------------------- */
+
+@media screen and (min-width: 768px), print {
+  .contents {
+    padding-left: calc(1.25rem + 0.5rem);
+  }
+  .page1 {
+    margin-top: 0;
+  }
+  .ex-head {
+    &__info {
+      &-meta {
+        &__row {
+          flex-direction: row;
+        }
+      }
+    }
+    &__logo {
+      width: 10.5rem;
+      height: 10.5rem;
+    }
+  }
+} // media screen
+
+@media screen and (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+} // media screen

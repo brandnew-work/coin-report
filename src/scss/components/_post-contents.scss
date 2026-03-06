@@ -1,0 +1,32 @@
+@use "../setting/utility" as *;
+@use "../functions/functions" as mx;
+@use "../components/title";
+@use "../components/btn-block";
+
+
+.post-content,
+.editor-area {
+  h2 {
+    margin-top: 2.5rem;
+  }
+  h3 {
+    margin-top: 2.5rem;
+  }
+  b, strong {
+    font-weight: bold;
+  }
+  p {
+    line-height: 1.7;
+  }
+}
+
+
+@media screen and (min-width: 768px) {
+
+  h2 {
+    margin-top: 2.5rem;
+  }
+  h3 {
+    margin-top: 2rem;
+  }
+}

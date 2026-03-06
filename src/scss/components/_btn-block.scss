@@ -1,0 +1,135 @@
+@use "../setting/utility" as *;
+@use "../functions/functions" as mx;
+@use "../components/icon-font";
+
+/* -------------------------------------------------------------------
+  btn-block
+------------------------------------------------------------------- */
+
+.btn-block {
+  display: grid;
+  grid-template:
+    'icon title' auto
+    'icon text' 1fr
+    / max-content 1fr
+  ;
+  align-items: baseline;
+  column-gap: 10px;
+  width: 275px;
+  max-width: 100%;
+  padding: 15px;
+  background-color: white;
+  border: 1px solid $color-border;
+  text-decoration: none;
+  &::before {
+    grid-area: icon;
+    content: '\e900';
+    color: $color-main;
+    font-family: icomoon;
+  }
+  &__title {
+    grid-area: title;
+    display: block;
+    font-size: 1.125rem;
+    font-weight: 500;
+    color: $color-main;
+  }
+  &__text {
+    grid-area: text;
+    display: block;
+    margin-top: .5rem;
+    font-size: .75rem;
+    color: $color-text;
+  }
+  &.--center {
+    margin-inline: auto;
+  }
+  &.--wide, &--wide {
+    width: 334px;
+  }
+  &.--white {
+    background-color: transparent;
+    border-color: white;
+    color: white;
+    .btn-block__title {
+      color: white;
+    }
+    &::before {
+      color: white;
+    }
+  }
+  &-cta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 9px;
+    &__item {
+      display: flex;
+      justify-content: center;
+      width: 275px;
+      min-height: 46px;
+      color: white;
+      text-decoration: none;
+      text-align: center;
+      &.--tel {
+        align-items: baseline;
+        background-color: $color-accent;
+        border: 1px solid $color-accent;
+        font-size: 2rem;
+        &::before {
+          content: attr(before);
+          font-size: 22px;
+        }
+      }
+      &.--reserve {
+        align-items: center;
+        background-color: $color-main;
+        border: 1px solid $color-main;
+        font-size: 1.125rem;
+      }
+    }
+  }
+}
+
+
+// hover -------------------------------------------------
+
+@media screen and (min-width: $animation-width) {
+  .btn-block {
+    transition: background-color .3s linear;
+    &__title,
+    &__text {
+      transition: color .3s linear;
+    }
+    &:hover {
+      background-color: $color-main;
+      .btn-block {
+        &__title,
+        &__text {
+          color: white;
+        }
+      }
+    }
+    &-cta {
+      &__item {
+        transition:
+          color .3s linear,
+          background-color .3s linear
+        ;
+        &.--tel {
+          &:hover {
+            color: $color-accent;
+            background-color: white;
+          }
+        }
+        &.--reserve {
+          &:hover {
+            color: $color-main;
+            background-color: white;
+          }
+        }
+      }
+    }
+  }
+} // media screen

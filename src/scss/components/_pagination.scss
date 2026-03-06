@@ -1,0 +1,44 @@
+@use "../setting/utility" as *;
+@use "../functions/functions" as mx;
+@use "../components/btn-block";
+
+/* -------------------------------------------------------------------
+  wp-pagenavi
+------------------------------------------------------------------- */
+
+.wp-pagenavi {
+  display: flex;
+  justify-content: center;
+  gap: .5rem;
+  .pages {
+    display: none;
+  }
+  a, .current {
+    display: grid;
+    place-items: center;
+    padding: 0 .75rem;
+    aspect-ratio: 1;
+    color: $color-text;
+    text-decoration: none;
+    font-size: min(1rem, mx.vw(12, 375));
+  }
+  a {
+    border: 2px solid $color-text;
+  }
+  .current {
+    background-color: $color-background;
+    color: white;
+  }
+  .first, .last {
+    display: none;
+  }
+}
+
+
+/* -------------------------------------------------------------------
+  768px以上
+------------------------------------------------------------------- */
+
+@media screen and (min-width: 768px) {
+
+}

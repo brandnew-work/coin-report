@@ -1,0 +1,17 @@
+@use "../setting/utility" as *;
+
+/* -------------------------------------------------------------------
+  background
+------------------------------------------------------------------- */
+
+.background {
+  &__base {
+    background-color: $color-background;
+  }
+  &__white {
+    background-color: white;
+  }
+  &__main {
+    background-color: $color-main;
+  }
+}

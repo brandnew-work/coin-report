@@ -1,0 +1,60 @@
+@charset "UTF-8";
+
+@use "sass:math";
+@use "../setting/utility" as *;
+
+/* -------------------------------------------------------------------
+  font rem計算
+------------------------------------------------------------------- */
+@mixin font-size($size: 14, $base: $font-size-base, $imp: "") {
+  font-size: $size + px + $imp;
+  font-size: math.div($size, $base)  + rem + $imp;
+}
+
+
+/* -------------------------------------------------------------------
+  各種rem計算（font以外）
+------------------------------------------------------------------- */
+@function rem($size: 0, $base: $font-size-base) {
+  @return math.div($size, $base) + rem;
+}
+
+
+/* -------------------------------------------------------------------
+  flex時のgapを差し引いた横幅計算
+------------------------------------------------------------------- */
+@mixin width-calc-gap( $column: 4, $gap: 2rem, $imp: "" ) {
+  width: calc(( 100% / #{$column} ) - ( ( #{$gap} * (#{$column} - 1)) / #{$column} ));
+}
+
+
+/* -------------------------------------------------------------------
+  アスペクト比固定
+------------------------------------------------------------------- */
+@mixin aspect( $horizon: 16,$vertical: 9, $fit: cover ) {
+  aspect-ratio: math.div($horizon, $vertical);
+  width: 100%;
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: $fit;
+  }
+}
+
+
+/* -------------------------------------------------------------------
+  vw変換
+------------------------------------------------------------------- */
+
+@function vw($size, $width: $width) {
+  $val: math.div($size, $width) * 100;
+  @return $val + vw;
+}
+
+
+@function autoClamp($start, $end) {
+  $middle: $end - $start;
+  $middle: math.div($middle, 2);
+  $middle: $middle + $start;
+  @return clamp($start * 1px, vw($middle, 768), $end * 1px);
+}

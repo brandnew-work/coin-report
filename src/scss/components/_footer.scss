@@ -1,0 +1,35 @@
+@charset "UTF-8";
+@use "../setting/utility" as *;
+@use "../functions/functions" as mx;
+@use "../base/space";
+@use "../base/background";
+@use "../components/layout";
+@use "../components/title";
+@use "../components/btn-block";
+
+
+/* -------------------------------------------------------------------
+  footer
+------------------------------------------------------------------- */
+
+// footer -------------------------------------------------
+
+.footer {
+}
+
+@media screen and (min-width: $animation-width) {
+}
+
+@media screen and (min-width: 1366px) {
+}
+
+@media screen and (min-width: 768px) {
+  .footer {
+  }
+
+}
+
+
+@media screen and (max-width: 768px) {
+
+}

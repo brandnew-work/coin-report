@@ -1,0 +1,37 @@
+@use "../setting/utility" as *;
+@use "../functions/functions" as mx;
+
+/* -------------------------------------------------------------------
+  content-faq
+------------------------------------------------------------------- */
+
+.content-faq {
+  font-size: 14px;
+  &__list {
+    display: grid;
+    row-gap: 15px;
+    max-width: 720px;
+  }
+  &__title {
+    display: flex;
+    align-items: baseline;
+    gap: .5em;
+    margin-bottom: 0;
+    padding: 15px 10px;
+    background-color: $color-background;
+    font-weight: 500;
+    &::before {
+      content: 'Q.';
+      flex-shrink: 0;
+    }
+  }
+  &__description {
+    padding: 9px 10px;
+  }
+}
+
+
+// hover -------------------------------------------------
+
+@media screen and (min-width: $animation-width) {
+} // media screen

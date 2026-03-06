@@ -1,0 +1,48 @@
+@use "../setting/utility" as *;
+@use "../functions/functions" as mx;
+
+/* -------------------------------------------------------------------
+  content-post
+------------------------------------------------------------------- */
+
+.content-post {
+  display: flex;
+  flex-direction: column;
+  gap: 5px 30px;
+  padding-inline: mx.autoClamp(0, 10);
+  padding-block: 15px;
+  border-bottom: 1px dotted $color-text;
+  &__list {
+    display: grid;
+    align-items: baseline;
+    max-width: 720px;
+    border-top: 1px dotted $color-text;
+  }
+  &__time {
+    flex-shrink: 0;
+    min-width: 5em;
+    font-size: 13px;
+    font-family: $font-title;
+    color: $color-main;
+  }
+  &__title {
+    font-size: 14px;
+    font-weight: 500;
+    a {
+      text-decoration: none;
+    }
+  }
+}
+
+
+// hover -------------------------------------------------
+
+@media screen and (min-width: $animation-width) {
+}
+
+
+@media screen and (min-width: 768px) {
+  .content-post {
+    flex-direction: row;
+  }
+} // media screen
